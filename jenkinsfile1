@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+}
+
+    stages{
+        stage ("git checkout"){
+            steps{
+                git branch: 'main', url: 'https://github.com/ARUNBABU99/SAMPLE_PROJECT_SOURCE.git'
+            }
+        }
+        stage ('whoami') {
+            steps{
+               sh 'echo whoami'
+            }
+        }
+    }
