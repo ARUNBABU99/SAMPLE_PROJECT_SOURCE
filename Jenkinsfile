@@ -1,3 +1,10 @@
+library identifier: 'jenkins_shared_libs@main',
+    // 'main' refers to a valid git ref (branch)
+    retriever: modernSCM([
+      $class: 'GitSCMSource',
+      remote: 'https://github.com/ARUNBABU99/Jenkins_shared_libs.git'
+])
+
 pipeline {
     agent {
         docker {
@@ -24,9 +31,10 @@ pipeline {
         }
         stage('Docker_push') {
             steps {
-                sh 'docker tag test arunbabu01/test'
-                sh 'docker login -u $dockerhub_USR -p $dockerhub_PSW'
-                sh 'docker push arunbabu01/test'
+                login('test')
+                // sh 'docker tag test arunbabu01/test'
+                // sh 'docker login -u $dockerhub_USR -p $dockerhub_PSW'
+                // sh 'docker push arunbabu01/test'
             }
         }
     }
