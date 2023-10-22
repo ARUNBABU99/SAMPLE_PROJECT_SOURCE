@@ -11,19 +11,19 @@ pipeline {
         }
         stage('Docker_build') {
             steps {
-                sh 'sudo docker build -t test .'
+                sh ' docker build -t test .'
             }
         }
         stage('Dockerimages') {
             steps {
-                sh 'sudo docker images'
+                sh ' docker images'
             }
         }
         stage('Docker_push') {
             steps {
-                sh 'sudo docker tag test arunbabu01/test'
+                sh ' docker tag test arunbabu01/test'
                 sh 'docker login -u $dockerhub_USR -p $dockerhub_PSW'
-                sh 'sudo docker push arunbabu01/test'
+                sh ' docker push arunbabu01/test'
             }
         }
     }
