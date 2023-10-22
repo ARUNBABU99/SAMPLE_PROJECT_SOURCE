@@ -22,7 +22,7 @@ pipeline {
         stage('Docker_push') {
             steps {
                 sh ' docker tag test arunbabu01/test'
-                sh 'docker login -u $dockerhub_USR -p $dockerhub_PSW'
+                sh 'docker login -u $dockerhub_USR -p $dockerhub_PSW docker.io' 
                 sh ' docker push arunbabu01/test'
             }
         }
